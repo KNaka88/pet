@@ -1,0 +1,45 @@
+<?php
+function cards_menu() {
+    $friends = friends();
+    $items = array();
+    foreach($friends as $key => $friend){
+      $items['cards/'.$key] = array(
+        'title' => 'Friends',
+        'page callback' => 'cards',
+        'page arguments' => array(1),
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+      );
+    }
+    return $items;
+}
+
+function cards($arg1){
+  $key = $arg1;
+  var_dump($key);
+  $friends= friends();
+
+  var_dump($friends[$key]['image']);
+  // $friends= friends();
+  // foreach ($friends as $key => $value) {
+  //   # code...
+  // }
+  return "Hey";
+}
+function friends(){
+  $friends = array(
+    "Michael" => array(
+      "image" => "url",
+      "message" => "You are fired!!"
+    ),
+    "Sarah" => array(
+      "image" => "url2",
+      "message" => "You are hired!!"
+    ),
+    "John" => array(
+      "image" => 'url3',
+      "message" => "You are promoted!!"
+    ),
+  );
+  return $friends;
+}

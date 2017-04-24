@@ -1,0 +1,42 @@
+<?php
+function groceries_menu() {
+    $items = array();
+    $items['eggs'] = array(
+          'quantity' => '5',
+          'price' => '2',
+          'title' => 'Groceries',
+          'page callback' => 'eggs',
+          'access callback' => TRUE,
+          'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+
+
+
+function showGroceries() {
+  $groceries['eggs'] = array(
+    'quantity' => '5',
+    'price' => '$3',
+  );
+
+  $groceries['milk'] = array(
+    'quantity' => '3',
+    'price' => '$4',
+  );
+  return $groceries;
+}
+
+function eggs() {
+  $return_string = "";
+  $groceries = showGroceries();
+  // $keys= array_keys($groceries);
+
+  foreach($groceries as $grocery => $value){
+    $return_string .= "Item: " . $grocery."<br>";
+    $return_string .= "Quantity;". $value["quantity"]."<br>";
+    $return_string .= "Price: ".$value["price"]."<br> <br>";
+  }
+  return '<div>'.$return_string.'</div>';
+}
