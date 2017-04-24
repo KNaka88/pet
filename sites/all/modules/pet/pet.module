@@ -1,0 +1,25 @@
+<?php
+function pet_menu() {
+
+    $items = array();
+    $items['pet'] = array(
+        'title' => 'Pet!',
+        'page callback' => 'show_image',
+        'access callback' => TRUE,
+        'type' => MENU_NORMAL_ITEM,
+    );
+    return $items;
+}
+
+function show_image() {
+
+
+    return '
+    <h1>Hey!!</h1>
+    <a href="https://www.amazon.com/dogs-supplies-training-beds-collars-grooming/b?ie=UTF8&node=2975312011">Image of my pet</a>
+    <img id="image" src='.variable_get("file_public_path", conf_path()."/files/dog.jpg").'>
+    <ul>
+      <li>Dog eats apple</li>
+    </ul>
+    ';
+}
